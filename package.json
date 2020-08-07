@@ -1,23 +1,24 @@
 {
-  "name": "apidoc",
-  "version": "0.24.0",
-  "description": "RESTful web API Documentation Generator",
-  "author": "Peter Rottmann <rottmann@inveris.de>",
+  "name": "@tianji-game/apidoc",
+  "version": "0.24.1",
+  "description": "RESTful web API Documentation Generator (Forked)",
+  "author": "HuangWei <164305264@qq.com>",
   "license": "MIT",
   "preferGlobal": true,
   "bin": "bin/apidoc",
   "main": "./lib/index.js",
-  "homepage": "http://apidocjs.com",
+  "homepage": "https://github.com/tianji-game/apidoc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apidoc/apidoc.git"
+    "url": "https://github.com/tianji-game/apidoc.git"
   },
   "bugs": {
-    "url": "https://github.com/apidoc/apidoc/issues"
+    "url": "https://github.com/tianji-game/apidoc/issues"
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
+    "babel": "babel-node ./lib/index.js",
     "build-example": "bin/apidoc -i example/ -o tmp/",
     "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd"
   },
@@ -27,7 +28,10 @@
     "doc",
     "documentation",
     "rest",
-    "restful"
+    "restful",
+    "mermaid",
+    "flowchart",
+    "sequence"
   ],
   "engines": {
     "node": ">= 0.10.0"
@@ -38,7 +42,7 @@
     "fs-extra": "^8.1.0",
     "handlebars": "^4.7.6",
     "lodash": "^4.17.19",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^11.0.0",
     "nodemon": "^2.0.4",
     "winston": "^3.3.3"
   },
@@ -47,7 +51,7 @@
     "apidoc-example": "^0.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
-    "jshint": "^2.11.1",
+    "jshint": "^2.12.0",
     "lodash-cli": "^4.17.5",
     "mocha": "^6.2.3",
     "path-to-regexp": "^3.2.0",

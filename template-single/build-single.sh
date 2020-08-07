@@ -76,6 +76,7 @@ cat <<EOF
     handlebars: './vendor/handlebars.min',
     handlebarsExtended: './utils/handlebars_helper',
     jquery: './vendor/jquery.min',
+    mermaid: './vendor/mermaid.min',
     locales: './locales/locale',
     lodash: './vendor/lodash.custom.min',
     pathToRegexp: './vendor/path-to-regexp/index',

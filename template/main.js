@@ -5,6 +5,7 @@ require.config({
         handlebars: './vendor/handlebars.min',
         handlebarsExtended: './utils/handlebars_helper',
         jquery: './vendor/jquery.min',
+		mermaid: './vendor/mermaid.min',
         locales: './locales/locale',
         lodash: './vendor/lodash.custom.min',
         pathToRegexp: './vendor/path-to-regexp/index',
@@ -51,7 +52,8 @@ require([
     'webfontloader',
     'bootstrap',
     'pathToRegexp',
-    'list'
+    'list',
+    'mermaid'
 ], function($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver, WebFont) {
 
     // Load google web fonts.
@@ -907,4 +909,36 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         return results;
     }
     Prism.highlightAll()
+
+    // mermaid
+    mermaid.initialize({
+        startOnLoad: false,
+        theme: 'forest',
+        // themeCSS: '.node rect { fill: red; }',
+        logLevel: 3,
+        securityLevel: 'loose',
+        flowchart: { 
+            curve: 'basis',
+            htmlLabels: false
+        },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 },
+        // sequenceDiagram: { actorMargin: 300 } // deprecated
+    });
+    // Example of using the API
+    var elements = document.querySelectorAll(".mermaid");
+    var svgCodes = new Array();
+
+    elements.forEach(function(elem, key) {
+        var code = elem.innerText.replace(/\\n/g, "\n");
+        console.log(code);
+        mermaid.render('mermaid', code, function(svgCode, bindFunctions) {
+            console.log(elem);
+            svgCodes[key] = svgCode;
+        }, elem);
+    });
+
+    elements.forEach(function(elem, key) {
+        elem.innerHTML = svgCodes[key];
+    });
 }

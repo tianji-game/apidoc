@@ -5,7 +5,7 @@
   <title>Loading...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.6.4/mermaid.min.js" integrity="sha512-kaov70mb/084wHYwVZLxTsCaq04AED9ksQaxgXXxbciHDdD8HAR8z7wNEfLLg8LgM5eu4J+tCfAsaIFoYsdVfw==" crossorigin="anonymous"></script>
   
   
   
@@ -3325,6 +3325,38 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         return results;
     }
     Prism.highlightAll()
+
+	// mermaid
+    mermaid.initialize({
+        startOnLoad: false,
+        theme: 'forest',
+        // themeCSS: '.node rect { fill: red; }',
+        logLevel: 3,
+        securityLevel: 'loose',
+        flowchart: { 
+            curve: 'basis',
+            htmlLabels: false
+        },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 },
+        // sequenceDiagram: { actorMargin: 300 } // deprecated
+    });
+    // Example of using the API
+    var elements = document.querySelectorAll(".mermaid");
+    var svgCodes = new Array();
+
+    elements.forEach(function(elem, key) {
+        var code = elem.innerText.replace(/\\n/g, "\n");
+        console.log(code);
+        mermaid.render('mermaid', code, function(svgCode, bindFunctions) {
+            console.log(elem);
+            svgCodes[key] = svgCode;
+        }, elem);
+    });
+
+    elements.forEach(function(elem, key) {
+        elem.innerHTML = svgCodes[key];
+    });
 }
 ;
 define("main", function(){});</script>
