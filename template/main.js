@@ -919,7 +919,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         securityLevel: 'loose',
         flowchart: { 
             curve: 'basis',
-            htmlLabels: false
+            htmlLabels: true
         },
         gantt: { axisFormat: '%m/%d/%Y' },
         sequence: { actorMargin: 50 },

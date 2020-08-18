@@ -14,7 +14,7 @@ Documentation: [apidocjs.com](http://apidocjs.com)
 ## Installation
 
 ```bash
-$ npm install -g apidoc
+$ npm install -g @tianji-game/apidoc
 ```
 
 ## Usage
